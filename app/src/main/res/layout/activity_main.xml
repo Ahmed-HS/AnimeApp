@@ -8,6 +8,9 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,7 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_nav_shadow_height"
             android:layout_gravity="bottom"
-            android:background="@drawable/bottom_nav_shadow" />
+            android:background="@drawable/bottom_nav_shadow"
+             />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNav"

@@ -3,6 +3,7 @@ package com.team.animeapp.di;
 
 import com.squareup.moshi.Moshi;
 import com.team.animeapp.data.sources.remote.JikanApi;
+import com.team.animeapp.util.moshi.LocalDateTimeAdapter;
 
 import javax.inject.Singleton;
 
@@ -19,13 +20,22 @@ public class NetworkModule {
 
     private static final String base_url  = "https://api.jikan.moe/v3/";
 
+
+    @Provides
+    Moshi provideMoshi()
+    {
+        return new Moshi.Builder()
+                .add(new LocalDateTimeAdapter())
+                .build();
+    }
+
     @Provides
     @Singleton
-    Retrofit provideRetrofit()
+    Retrofit provideRetrofit(Moshi moshi)
     {
-        return new Retrofit.Builder().
-                baseUrl(base_url)
-                .addConverterFactory(MoshiConverterFactory.create())
+        return new Retrofit.Builder()
+                .baseUrl(base_url)
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .build();
     }
 

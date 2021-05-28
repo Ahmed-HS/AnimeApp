@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Chip -->
+
+    <style name="Theme.AnimeApp.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/chip_bg_color</item>
+        <item name="android:textColor">@color/chip_txt_color</item>
+        <item name="chipStrokeColor">@color/color_on_surface_alpha_10</item>
+        <item name="rippleColor">@color/color_on_surface_alpha_25</item>
+        <item name="android:textSize">11sp</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="chipStrokeWidth">2dp</item>
+        <item name="shapeAppearanceOverlay">@style/Theme.AnimeApp.ShapeOverlay.Chip</item>
+        <item name="chipStartPadding">18dp</item>
+        <item name="chipEndPadding">18dp</item>
+        <item name="chipMinHeight">40dp</item>
+    </style>
+
+
+    <style name="Theme.AnimeApp.Button.IconButton" parent="Widget.MaterialComponents.Button.TextButton" >
+
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Caption</item>
+        <!-- Same as textAppearanceCaption text color -->
+        <item name="android:textColor">@color/color_on_surface_alpha_50</item>
+        <item name="iconTint">@color/color_on_surface_alpha_50</item>
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+    </style>
+
+</resources>

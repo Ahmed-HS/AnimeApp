@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/topAnimeFragment">
+
+    <fragment
+        android:id="@+id/topAnimeFragment"
+        android:name="com.team.animeapp.ui.topanimefragment.TopAnimeFragment"
+        android:label="fragment_top_anime"
+        tools:layout="@layout/fragment_top_anime" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.team.animeapp.ui.searchfragment.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/watchLaterFragment"
+        android:name="com.team.animeapp.ui.watchlaterfragment.WatchLaterFragment"
+        android:label="fragment_watch_later"
+        tools:layout="@layout/fragment_watch_later" />
+</navigation>

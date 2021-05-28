@@ -2,16 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@id/topAnimeFragment"
         android:title="Top Anime"
         android:icon="@drawable/ic_star_outline_24"
         />
 
     <item
+        android:id="@id/searchFragment"
         android:title="Discover"
         android:icon="@drawable/ic_search_24"
         />
 
     <item
+        android:id="@id/watchLaterFragment"
         android:title="Watch Later"
         android:icon="@drawable/ic_schedule_24"
         />

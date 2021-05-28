@@ -6,8 +6,10 @@ buildscript {
     }
 
     ext{
-        hilt_version = "2.35"
+        hilt_version = "2.36"
         retrofit_version = "2.9.0"
+        nav_version = "2.3.5"
+        glide_version = "4.12.0"
     }
 
     dependencies {
@@ -25,6 +27,7 @@ allprojects {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+        maven { url 'https://jitpack.io' }
     }
 }
 
