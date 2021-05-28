@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Top Anime"
+        android:icon="@drawable/ic_star_outline_24"
+        />
+
+    <item
+        android:title="Discover"
+        android:icon="@drawable/ic_search_24"
+        />
+
+    <item
+        android:title="Watch Later"
+        android:icon="@drawable/ic_schedule_24"
+        />
+
+</menu>
