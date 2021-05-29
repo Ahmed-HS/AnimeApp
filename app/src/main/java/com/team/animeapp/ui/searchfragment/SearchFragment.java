@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -69,12 +71,8 @@ public class SearchFragment extends Fragment {
     {
         BaseListAdapter<Anime, ItemAnimeBinding> animeListAdapter = new BaseListAdapter<>(R.layout.item_anime,(binding, anime, position) -> {
 
-            Glide.with(binding.image)
-                    .load(anime.imageUrl)
-                    .into(binding.image);
-
-            binding.title.setText(anime.title);
-
+            binding.setAnime(anime);
+            binding.rank.setVisibility(View.INVISIBLE);
             binding.image.setOnClickListener(v -> {
                 if (animeDatabase.isInWatchLater(anime)) {
                     animeDatabase.removeFromWatchLater(anime);
@@ -101,6 +99,15 @@ public class SearchFragment extends Fragment {
                 else if(listResult instanceof Result.Success)
                 {
                     binding.loadingIndicator.setRefreshing(false);
+
+                    if(((Result.Success<List<Anime>>) listResult).data.isEmpty())
+                    {
+                        binding.searchHint.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        binding.searchHint.setVisibility(View.INVISIBLE);
+                    }
+
                     animeListAdapter.submitList(((Result.Success<List<Anime>>) listResult).data);
                 }
             }
@@ -134,6 +141,10 @@ public class SearchFragment extends Fragment {
 
             }
         });
+
+        AppCompatImageView searchIcon = requireView().findViewById(R.id.imageViewSearch);
+        searchIcon.setImageTintList(AppCompatResources.getColorStateList(requireContext(),R.color.material_on_background_emphasis_medium));
+
     }
 
     private void setupFilters()

@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.team.animeapp.data.models.network.Anime;
+import com.team.animeapp.data.models.network.GenreResponse;
 import com.team.animeapp.data.models.network.SearchResponse;
 import com.team.animeapp.data.models.network.TopAnimeResponse;
 import com.team.animeapp.data.sources.remote.JikanApi;
@@ -27,6 +28,9 @@ public class AnimeRepositoryImpl implements AnimeRepository {
     private JikanApi jikanApi;
 
     private MutableLiveData<Result<List<Anime>>> searchResults;
+
+
+    private MutableLiveData<List<Anime>> genreResults = new MutableLiveData<>();
 
     @Inject
     public AnimeRepositoryImpl(JikanApi jikanApi)
@@ -83,5 +87,33 @@ public class AnimeRepositoryImpl implements AnimeRepository {
         });
 
         return searchResults;
+    }
+
+    @Override
+    public LiveData<List<Anime>> getAnimeInGenre(int genreId) {
+
+        if(genreId == -1)
+        {
+            return genreResults;
+        }
+
+        jikanApi.getAnimeInGenre(genreId).enqueue(new Callback<GenreResponse>() {
+            @Override
+            public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
+                if(response.body() != null)
+                {
+                    genreResults.postValue(response.body().anime);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GenreResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + call.request().url());
+                Log.d(TAG, "onFailure: " + t.getMessage());
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return genreResults;
     }
 }

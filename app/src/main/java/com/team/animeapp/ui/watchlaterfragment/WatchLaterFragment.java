@@ -42,11 +42,10 @@ public class WatchLaterFragment extends Fragment {
 
         BaseListAdapter<Anime, ItemAnimeBinding> animeListAdapter = new BaseListAdapter<>(R.layout.item_anime,(binding, anime, position) ->{
 
-            Glide.with(binding.image)
-                    .load(anime.imageUrl)
-                    .into(binding.image);
-
-            binding.title.setText(anime.title);
+            binding.setAnime(anime);
+            binding.rating.setVisibility(View.GONE);
+            binding.rank.setVisibility(View.GONE);
+            binding.stars.setVisibility(View.GONE);
 
             binding.image.setOnClickListener(v ->{
             });

@@ -32,8 +32,8 @@ public class Anime {
     public String synopsis;
     public String type;
 
-    @Json(name = "episodes")
-    public int episodesCount;
+//    @Json(name = "episodes")
+//    public int episodesCount;
 
     public long rank;
 

@@ -20,4 +20,9 @@
         android:name="com.team.animeapp.ui.watchlaterfragment.WatchLaterFragment"
         android:label="fragment_watch_later"
         tools:layout="@layout/fragment_watch_later" />
+    <fragment
+        android:id="@+id/genreFragment"
+        android:name="com.team.animeapp.ui.genrefragment.GenreFragment"
+        android:label="fragment_genre"
+        tools:layout="@layout/fragment_genre" />
 </navigation>

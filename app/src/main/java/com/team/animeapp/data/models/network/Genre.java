@@ -20,7 +20,6 @@ public class Genre {
         allGenres.add(new Genre(27,"Shounen"));
         allGenres.add(new Genre(23,"School"));
         allGenres.add(new Genre(15,"Kids"));
-        allGenres.add(new Genre(11,"Game"));
         allGenres.add(new Genre(24,"Sci-Fi"));
         allGenres.add(new Genre(37,"Supernatural"));
         allGenres.add(new Genre(36,"Slice Of Life"));

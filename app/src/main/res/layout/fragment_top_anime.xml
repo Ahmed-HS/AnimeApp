@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.topanimefragment.TopAnimeFragment">
 
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressIndicator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:indeterminate="true"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/topAnimeList"
         android:layout_width="0dp"
