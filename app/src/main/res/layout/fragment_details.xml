@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detailsfragment.DetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/movieName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth"
+            android:text="PlaceHolderTxt"
+            android:padding="8dp"
+            android:textColor="#feddbe"
+            android:textSize="30dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/wevViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffc947"
+            android:padding="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movieName"
+            tools:ignore="WebViewLayout">
+
+            <WebView
+                android:id="@+id/webview"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                tools:layout_editor_absoluteX="0dp"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="140dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="-70dp"
+            android:layout_marginLeft="20dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wevViewContainer">
+
+
+            <ImageView
+                android:id="@+id/movieImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
+
+        </androidx.cardview.widget.CardView>
+
+        <com.willy.ratingbar.ScaleRatingBar
+            android:id="@+id/simpleRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            app:srb_clearRatingEnabled="true"
+            app:srb_clickable="true"
+            app:srb_drawableEmpty="@drawable/empty"
+            app:srb_drawableFilled="@drawable/filled"
+            app:srb_isIndicator="false"
+            app:srb_minimumStars="1"
+            app:srb_numStars="4"
+            app:srb_rating="2"
+            app:srb_scrollable="true"
+            app:srb_starHeight="30dp"
+            app:srb_starPadding="2dp"
+            app:srb_starWidth="30dp"
+            app:srb_stepSize="0.5"
+            tools:ignore="MissingClass">
+        </com.willy.ratingbar.ScaleRatingBar>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="8dp"
+            android:textSize="18dp"
+            android:text="place"
+            android:fontFamily="@font/amaranth"
+            app:chipBackgroundColor="#ffc947"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wevViewContainer" />
+
+        <TextView
+            android:id="@+id/movieDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="PlaceHolderTxt"
+            android:textColor="#feddbe"
+            android:textSize="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/simpleRatingBar" />
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</ScrollView>

@@ -25,4 +25,9 @@
         android:name="com.team.animeapp.ui.genrefragment.GenreFragment"
         android:label="fragment_genre"
         tools:layout="@layout/fragment_genre" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.team.animeapp.ui.detailsfragment.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>

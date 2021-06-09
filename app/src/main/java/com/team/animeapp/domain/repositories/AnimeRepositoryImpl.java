@@ -32,6 +32,8 @@ public class AnimeRepositoryImpl implements AnimeRepository {
 
     private MutableLiveData<List<Anime>> genreResults = new MutableLiveData<>();
 
+
+
     @Inject
     public AnimeRepositoryImpl(JikanApi jikanApi)
     {
@@ -59,6 +61,9 @@ public class AnimeRepositoryImpl implements AnimeRepository {
 
         return topAnime;
     }
+
+
+
 
     @Override
     public LiveData<Result<List<Anime>>> searchAnime(String query, List<Integer> genres) {

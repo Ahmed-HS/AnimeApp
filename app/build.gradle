@@ -67,4 +67,8 @@ dependencies {
 
     implementation 'com.github.iammert:MultiSearchView:0.3'
 
+    //RateBar
+    implementation 'com.github.ome450901:SimpleRatingBar:1.5.1'
+
+
 }

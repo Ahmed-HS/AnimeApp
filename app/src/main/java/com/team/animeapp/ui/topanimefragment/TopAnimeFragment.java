@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -53,17 +54,23 @@ public class TopAnimeFragment extends Fragment {
 
         BaseListAdapter<Anime, ItemAnimeBinding> topAnimeListAdapter = new BaseListAdapter<>(R.layout.item_anime,(binding,anime,position) ->{
 
-//            Glide.with(binding.image)
-//                    .load(anime.imageUrl)
-//                    .into(binding.image);
-//
-//            binding.title.setText(anime.title);
-//            binding.rank.setText("#" +anime.rank);
-//            binding.rating.setText("Rated " + anime.rating + "/10");
+            Glide.with(binding.image)
+                    .load(anime.trailerUrl)
+                   .into(binding.image);
+
+            binding.title.setText(anime.title);
+            binding.rank.setText("#" +anime.rank);
+            binding.rating.setText("Rated " + anime.rating + "/10");
 
             binding.setAnime(anime);
 
             binding.image.setOnClickListener(v ->{
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("anime",anime.malId);
+                Navigation.findNavController(view).navigate(R.id.detailsFragment,bundle);
+                System.out.println("Data"+anime.trailerUrl);
+
                 if(animeDatabase.isInWatchLater(anime))
                 {
                     animeDatabase.removeFromWatchLater(anime);

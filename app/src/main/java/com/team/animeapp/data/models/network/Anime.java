@@ -1,5 +1,8 @@
 package com.team.animeapp.data.models.network;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.squareup.moshi.Json;
 
 import java.time.LocalDateTime;
@@ -51,4 +54,5 @@ public class Anime {
 
     public List<Studio> studios;
     public List<Genre> genres;
+
 }

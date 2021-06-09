@@ -20,7 +20,7 @@ public interface JikanApi {
     Call<TopAnimeResponse> getTopRanked();
 
     @GET("anime/{id}")
-    LiveData<Anime> getAnimeById(@Path("id") int id);
+    Call<Anime> getAnimeById(@Path("id") int id);
 
     @GET("search/anime?limit=30")
     Call<SearchResponse> searchAnime(@Query("q") String query , @Query("genre") List<Integer> genres);
