@@ -102,6 +102,29 @@
             app:layout_constraintTop_toBottomOf="@+id/wevViewContainer" />
 
         <TextView
+            android:id="@+id/timerHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Upcoming Episode"
+            android:textColor="#feddbe"
+            android:textSize="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/simpleRatingBar" />
+
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amaranth"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="00:00:00:00"
+            android:textColor="#feddbe"
+            android:textSize="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/timerHeader" />
+        <TextView
             android:id="@+id/movieDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,9 +134,19 @@
             android:text="PlaceHolderTxt"
             android:textColor="#feddbe"
             android:textSize="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/simpleRatingBar" />
+            app:layout_constraintTop_toBottomOf="@+id/timer" />
 
-
+        <com.google.android.material.chip.Chip
+            android:id="@+id/watchLater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="8dp"
+            android:textSize="18dp"
+            android:fontFamily="@font/amaranth"
+            app:chipBackgroundColor="#ffc947"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tag" />
 
 
 

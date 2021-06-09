@@ -71,17 +71,6 @@ public class TopAnimeFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.detailsFragment,bundle);
                 System.out.println("Data"+anime.trailerUrl);
 
-                if(animeDatabase.isInWatchLater(anime))
-                {
-                    animeDatabase.removeFromWatchLater(anime);
-                    Snackbar.make(binding.getRoot(),"Removed " + anime.title + " from watch later list",Snackbar.LENGTH_LONG)
-                    .show();
-                }
-                else {
-                    animeDatabase.addToWatchLater(anime);
-                    Snackbar.make(binding.getRoot(),"Added " + anime.title + " to watch later list",Snackbar.LENGTH_LONG)
-                            .show();
-                }
             });
 
         });
