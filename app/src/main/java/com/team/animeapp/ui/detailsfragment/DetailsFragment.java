@@ -1,10 +1,12 @@
 package com.team.animeapp.ui.detailsfragment;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -148,16 +150,21 @@ public class DetailsFragment extends Fragment {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private int getDaysLeft(String bradCastDate) {
         int timeLeft = 0;
         Date currentTime = Calendar.getInstance().getTime();
 
         if (bradCastDate == null) return -1;
         String[] broadCastDay = anime.broadcastTime.split(" ");
+        System.out.println("hello"+anime.broadcastTime);
+        System.out.println(broadCastDay[0]);
+
 
         //GET DAY
         int today = currentTime.getDay();
-        int broadDay = daysMap.get(broadCastDay[0]);
+        int broadDay = daysMap.getOrDefault(broadCastDay[0],-1);
+        if(broadDay == -1)return -1;
 
         if (broadDay - today < 0)
             timeLeft = broadDay - today + 7;
