@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.team.animeapp.R;
@@ -33,9 +34,6 @@ public class AnimeGenreFragment extends Fragment {
 
     Genre genreToDisplay;
 
-    @Inject
-    AnimeDatabase animeDatabase;
-
     FragmentTopAnimeBinding binding;
 
     GenreViewModel viewModel;
@@ -51,39 +49,24 @@ public class AnimeGenreFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         binding = FragmentTopAnimeBinding.bind(view);
 
-
-
         viewModel = new ViewModelProvider(this).get(GenreViewModel.class);
 
         viewModel.fetchAnimeInGenre(genreToDisplay.malId);
 
         BaseListAdapter<Anime, ItemAnimeBinding> topAnimeListAdapter = new BaseListAdapter<>(R.layout.item_anime,(binding,anime,position) ->{
 
-//            Glide.with(binding.image)
-//                    .load(anime.imageUrl)
-//                    .into(binding.image);
-//
-//            binding.title.setText(anime.title);
-//            binding.rank.setText("#" +anime.rank);
-//            binding.rating.setText("Rated " + anime.rating + "/10");
-
             binding.rank.setVisibility(View.INVISIBLE);
 
             binding.setAnime(anime);
 
-            binding.image.setOnClickListener(v ->{
-                if(animeDatabase.isInWatchLater(anime))
-                {
-                    animeDatabase.removeFromWatchLater(anime);
-                    Snackbar.make(binding.getRoot(),"Removed " + anime.title + " from watch later list",Snackbar.LENGTH_LONG)
-                    .show();
-                }
-                else {
-                    animeDatabase.addToWatchLater(anime);
-                    Snackbar.make(binding.getRoot(),"Added " + anime.title + " to watch later list",Snackbar.LENGTH_LONG)
-                            .show();
-                }
+            binding.getRoot().setOnClickListener(v ->{
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("anime",anime.malId);
+                Navigation.findNavController(getView()).navigate(R.id.detailsFragment,bundle);
+
             });
+
 
         });
 

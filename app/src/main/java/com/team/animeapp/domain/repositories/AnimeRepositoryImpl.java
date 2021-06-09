@@ -29,7 +29,6 @@ public class AnimeRepositoryImpl implements AnimeRepository {
 
     private MutableLiveData<Result<List<Anime>>> searchResults;
 
-
     private MutableLiveData<List<Anime>> genreResults = new MutableLiveData<>();
 
 
@@ -94,31 +93,4 @@ public class AnimeRepositoryImpl implements AnimeRepository {
         return searchResults;
     }
 
-    @Override
-    public LiveData<List<Anime>> getAnimeInGenre(int genreId) {
-
-        if(genreId == -1)
-        {
-            return genreResults;
-        }
-
-        jikanApi.getAnimeInGenre(genreId).enqueue(new Callback<GenreResponse>() {
-            @Override
-            public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
-                if(response.body() != null)
-                {
-                    genreResults.postValue(response.body().anime);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<GenreResponse> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + call.request().url());
-                Log.d(TAG, "onFailure: " + t.getMessage());
-                Log.d(TAG, "onFailure: " + t.getMessage());
-            }
-        });
-
-        return genreResults;
-    }
 }

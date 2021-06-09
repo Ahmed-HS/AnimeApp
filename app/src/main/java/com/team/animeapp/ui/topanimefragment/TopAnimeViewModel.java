@@ -18,6 +18,7 @@ public class TopAnimeViewModel extends ViewModel {
 
     private MutableLiveData<List<Anime>> mTopAnime = new MutableLiveData();
     public LiveData<List<Anime>> topAnime = mTopAnime;
+
     @Inject
     TopAnimeViewModel(AnimeRepository animeRepository){
         topAnime = animeRepository.getTopRanked();

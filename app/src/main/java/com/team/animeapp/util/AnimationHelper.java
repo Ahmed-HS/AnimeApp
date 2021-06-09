@@ -14,10 +14,8 @@ public class AnimationHelper {
         Animation animation = AnimationUtils.loadAnimation(view.getContext(),animId);
         long duration = 500;
         Interpolator interpolator = new FastOutSlowInInterpolator();
-        long startOffset = 0;
 
         animation.setDuration(duration);
-        animation.setStartOffset(startOffset);
         animation.setInterpolator(interpolator);
 
         view.startAnimation(animation);

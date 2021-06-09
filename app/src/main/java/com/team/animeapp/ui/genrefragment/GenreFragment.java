@@ -29,6 +29,7 @@ public class GenreFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         binding = FragmentGenreBinding.bind(view);
+
         GenrePagerAdapter adapter = new GenrePagerAdapter(this);
         binding.pager.setAdapter(adapter);
 

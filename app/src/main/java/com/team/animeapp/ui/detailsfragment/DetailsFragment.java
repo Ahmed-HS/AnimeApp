@@ -93,6 +93,7 @@ public class DetailsFragment extends Fragment {
             int  currAnimeID = bundle.getInt("anime");
 
             jikanApi.getAnimeById(currAnimeID).enqueue(new Callback<Anime>() {
+                @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void onResponse(Call<Anime> call, Response<Anime> response) {
                     if(response!=null) {

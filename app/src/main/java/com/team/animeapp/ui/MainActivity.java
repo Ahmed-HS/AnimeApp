@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
                                                      @NonNull NavDestination destination,
                                                      @Nullable  Bundle arguments) {
 
-
                         switch (destination.getId())
                         {
                             case R.id.topAnimeFragment:

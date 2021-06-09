@@ -35,12 +35,9 @@ public class TopAnimeFragment extends Fragment {
 
     private static final String TAG  = TopAnimeFragment.class.getSimpleName();
 
-    @Inject
-    AnimeDatabase animeDatabase;
+    private FragmentTopAnimeBinding binding;
 
-    FragmentTopAnimeBinding binding;
-
-    TopAnimeViewModel viewModel;
+    private TopAnimeViewModel viewModel;
 
     public TopAnimeFragment() {
         // Required empty public constructor
@@ -64,12 +61,11 @@ public class TopAnimeFragment extends Fragment {
 
             binding.setAnime(anime);
 
-            binding.image.setOnClickListener(v ->{
+            binding.getRoot().setOnClickListener(v ->{
 
                 Bundle bundle = new Bundle();
                 bundle.putInt("anime",anime.malId);
                 Navigation.findNavController(view).navigate(R.id.detailsFragment,bundle);
-                System.out.println("Data"+anime.trailerUrl);
 
             });
 

@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,8 +51,6 @@ public class SearchFragment extends Fragment {
 
     String lastSearch = "";
 
-    @Inject
-    AnimeDatabase animeDatabase;
 
     public SearchFragment() {
         super(R.layout.fragment_search);
@@ -73,18 +72,15 @@ public class SearchFragment extends Fragment {
 
             binding.setAnime(anime);
             binding.rank.setVisibility(View.INVISIBLE);
-            binding.image.setOnClickListener(v -> {
-                if (animeDatabase.isInWatchLater(anime)) {
-                    animeDatabase.removeFromWatchLater(anime);
-                    Snackbar.make(binding.getRoot(), "Removed " + anime.title + " from watch later list", Snackbar.LENGTH_LONG)
-                            .show();
-                } else {
-                    animeDatabase.addToWatchLater(anime);
-                    Snackbar.make(binding.getRoot(), "Added " + anime.title + " to watch later list", Snackbar.LENGTH_LONG)
-                            .show();
-                }
+
+            binding.getRoot().setOnClickListener(v ->{
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("anime",anime.malId);
+                Navigation.findNavController(getView()).navigate(R.id.detailsFragment,bundle);
 
             });
+
         });
 
         binding.animeList.setAdapter(animeListAdapter);
