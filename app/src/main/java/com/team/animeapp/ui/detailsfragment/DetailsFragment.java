@@ -24,7 +24,11 @@ import com.team.animeapp.domain.Result;
 import com.team.animeapp.domain.repositories.AnimeRepository;
 import com.team.animeapp.ui.searchfragment.SearchViewModel;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -84,10 +88,17 @@ public class DetailsFragment extends Fragment {
                             binding.simpleRatingBar.setRating(anime.rating%5);
 
                             binding.movieDesc.setText(anime.synopsis);
+                            System.out.println("hello"+anime.status);
+                            System.out.println("hello"+currAnimeID);
 
                             System.out.println("hello"+anime.genres.get(0).name);
                             System.out.println("hello"+anime.studios.get(0).name);
-                            System.out.println("hello"+anime.endDate);
+                            try {
+                                findDifference(convertTODate(anime.airingDuration.from),convertTODate(anime.airingDuration.to));
+
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
 
                         });
 
@@ -105,5 +116,51 @@ public class DetailsFragment extends Fragment {
 
         }
     }
+
+    private Date convertTODate(String inputString) throws ParseException {
+        // Convert input string into a date
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String[]arr =  inputString.split("T");
+        Date date = inputFormat.parse(arr[0]+" "+arr[1]);
+        return  date;
+    }
+
+    private void findDifference(Date d1, Date d2)  {
+        // Calucalte time difference
+        // in milliseconds
+        long difference_In_Time = d2.getTime() - d1.getTime();
+
+        // Calucalte time difference in
+        // seconds, minutes, hours, years,
+        // and days
+        long difference_In_Seconds = (difference_In_Time / 1000) % 60;
+
+        long difference_In_Minutes = (difference_In_Time / (1000 * 60)) % 60;
+
+        long difference_In_Hours = (difference_In_Time / (1000 * 60 * 60)) % 24;
+
+        long difference_In_Years = (difference_In_Time / (1000l * 60 * 60 * 24 * 365));
+
+        long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
+
+
+        System.out.print(
+                "Difference "
+                        + "between two dates is: ");
+
+        System.out.println(
+                difference_In_Years
+                        + " years, "
+                        + difference_In_Days
+                        + " days, "
+                        + difference_In_Hours
+                        + " hours, "
+                        + difference_In_Minutes
+                        + " minutes, "
+                        + difference_In_Seconds
+                        + " seconds");
+        return ;
+    }
+
 
 }

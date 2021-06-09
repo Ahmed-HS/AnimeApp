@@ -22,7 +22,7 @@ public class Anime {
     @Json(name = "trailer_url")
     public String trailerUrl;
 
-    public String duration;
+   public String duration;
 
     @Json(name = "broadcast")
     public String broadcastTime;
@@ -50,7 +50,10 @@ public class Anime {
     public LocalDateTime startDate;
 
     @Json(name = "end_date")
-    public LocalDateTime endDate;
+    public String endDate;
+
+    @Json(name="status")
+    public String status;
 
     public List<Studio> studios;
     public List<Genre> genres;

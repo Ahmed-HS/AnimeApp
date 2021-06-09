@@ -6,9 +6,9 @@ import java.time.LocalDateTime;
 
 public class AiringDuration {
 
-    public LocalDateTime from;
+    public String from;
 
-    public LocalDateTime to;
+    public String to;
 
     @Json(name = "string")
     String stringFormat;
